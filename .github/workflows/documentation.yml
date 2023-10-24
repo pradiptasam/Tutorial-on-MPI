@@ -27,6 +27,7 @@ jobs:
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
           publish_branch: master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/
           force_orphan: true
+
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
