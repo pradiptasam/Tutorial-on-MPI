@@ -28,7 +28,7 @@ jobs:
         with:
           publish_branch: gh-page
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
+          publish_dir: _static/
           force_orphan: true
 
 
