@@ -22,18 +22,18 @@ jobs:
           echo ${{github.event_name}}
           echo ${{github.ref}}
           echo ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         with:
-          branch: gh-page
-          folder: _build
+          publish_branch: gh-page
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/
+          force_orphan: true
 
-#     - name: Deploy to GitHub Pages
-#       uses: peaceiris/actions-gh-pages@v3
-#       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-#       with:
-#         publish_branch: gh-page
 #         github_token: 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
-#         publish_dir: _build/
-#         force_orphan: true
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Deploy
+#       uses: JamesIves/github-pages-deploy-action@4.1.0
+#       with:
+#         branch: gh-page
+#         folder: _build
